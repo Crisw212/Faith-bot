@@ -1,25 +1,77 @@
-<div id="vf-chat" style="width:100%; height:100vh;"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FaithBot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Basic Faith-Themed Styles -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(to bottom, #f9f8f6, #dbe6e4);
+    }
 
-<script type="text/javascript">
-(function (d, t) {
-  var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-  v.onload = function () {
-    window.voiceflow.chat.load({
-      verify: { projectID: 68ba3265d8d18d849d8db823 },
-      url: 'https://general-runtime.voiceflow.com',
-      versionID: 'production',
-      assistant: {
-        title: "FaithBot",
-        description: "Your personal faith-based assistant"
-      },
-      render: {
-        mode: 'embedded',
-        target: document.getElementById('vf-chat')
-      }
-    });
-  };
-  v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-  v.type = "text/javascript";
-  s.parentNode.insertBefore(v, s);
-})(document, 'script');
-</script>
+    #vf-chat {
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* Optional: Header/Title above chat */
+    #hero-title {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2c3e50;
+      z-index: 10;
+    }
+
+    /* Push chat slightly below the header */
+    #vf-chat {
+      position: relative;
+      top: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Optional Hero Title -->
+  <div id="hero-title">Welcome to FaithBot</div>
+
+  <!-- Chat Container -->
+  <div id="vf-chat"></div>
+
+  <!-- Voiceflow Embed -->
+  <script type="text/javascript">
+  (function (d, t) {
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function () {
+      window.voiceflow.chat.load({
+        verify: { projectID: '68ba3265d8d18d849d8db823' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production',
+        assistant: {
+          title: "FaithBot",
+          description: "Your personal faith-based assistant"
+        },
+        render: {
+          mode: 'embedded',
+          target: document.getElementById('vf-chat')
+        },
+        autoOpen: true  // Auto opens chat on page load
+      });
+    };
+    v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+    v.type = "text/javascript";
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+  </script>
+</body>
+</html>
